@@ -18,3 +18,5 @@
 # Example 
 
 https://discord.com/oauth2/authorize?client_id=[YOUR_CLIENT_ID]&permissions=1099511629824&integration_type=0&scope=bot+applications.commands
+
+or you can [Invite bot](https://discord.com/oauth2/authorize?client_id=1347824381824335932)
