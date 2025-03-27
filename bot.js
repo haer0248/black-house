@@ -142,8 +142,6 @@ client.on('interactionCreate', async interaction => {
 
             if (isNaN(minute)) {
                 await interaction.reply({ content: '錯誤：請輸入有效的數字！', flags: MessageFlags.Ephemeral });
-            } else if (minute > 40320) {
-                await interaction.reply({ content: '錯誤：最長不能超過 28 天，不如直接把他丟出去了吧。', flags: MessageFlags.Ephemeral });
             } else {
                 const fetchGuild = interaction.guild;
                 const fetchUser = await fetchGuild.members.fetch(user_id);
@@ -161,6 +159,10 @@ client.on('interactionCreate', async interaction => {
                     timeOutLength = newTimeoutDuration;
                 } else {
                     timeOutLength = (minute * 60 * 1000);
+                }
+
+                if (timeOutLength >= 2419200000) {
+                    return await interaction.reply({ content: '錯誤：最長不能超過 28 天，不如直接把他丟出去了吧。', flags: MessageFlags.Ephemeral });
                 }
 
                 try {
